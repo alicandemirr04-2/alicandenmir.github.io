@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Alican Demir | Kişisel Web Sitesi</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0f172a;
+            color: white;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.92);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #26334d;
+        }
+
+        .navbar {
+            max-width: 1100px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        .menu {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            color: #38bdf8;
+        }
+
+        /* ANA SAYFA */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 120px 20px 60px;
+
+            background:
+                radial-gradient(circle at top right, #164e63, transparent 35%),
+                radial-gradient(circle at bottom left, #1e3a8a, transparent 35%),
+                #0f172a;
+        }
+
+        .hero-content {
+            max-width: 1100px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 58px;
+            margin-bottom: 10px;
+        }
+
+        .hero-text h1 span {
+            color: #38bdf8;
+        }
+
+        .hero-text h2 {
+            font-size: 25px;
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            color: #cbd5e1;
+            font-size: 18px;
+            max-width: 600px;
+        }
+
+        .buttons {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 13px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #38bdf8;
+            color: #082f49;
+        }
+
+        .btn-primary:hover {
+            background: #7dd3fc;
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            border: 1px solid #38bdf8;
+            color: #38bdf8;
+        }
+
+        .btn-secondary:hover {
+            background: #38bdf8;
+            color: #082f49;
+        }
+
+        /* PROFİL FOTOĞRAFI */
+        .profile-photo {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+            border: 6px solid #38bdf8;
+            box-shadow: 0 0 40px rgba(56, 189, 248, 0.35);
+        }
+
+        /* GENEL */
+        section {
+            padding: 90px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 50px;
+        }
+
+        .section-title span {
+            color: #38bdf8;
+        }
+
+        /* HAKKIMDA */
+        .about {
+            background: #111c31;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .info-card {
+            background: #17233a;
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #263852;
+        }
+
+        .info-card h3 {
+            color: #38bdf8;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .info-card p {
+            color: #cbd5e1;
+        }
+
+        /* EĞİTİM */
+        .education {
+            display: grid;
+            gap: 20px;
+        }
+
+        .school {
+            background: #17233a;
+            border-left: 5px solid #38bdf8;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        .school h3 {
+            color: white;
+            margin-bottom: 7px;
+        }
+
+        .school p {
+            color: #94a3b8;
+        }
+
+        /* YAZILIM */
+        .skills {
+            background: #111c31;
+        }
+
+        .skill-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .skill {
+            background: #17233a;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 15px;
+            border: 1px solid #263852;
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-8px);
+            border-color: #38bdf8;
+        }
+
+        .skill .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .skill h3 {
+            color: #38bdf8;
+        }
+
+        /* HOBİLER */
+        .hobbies {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .hobby {
+            padding: 35px 20px;
+            background: #17233a;
+            border-radius: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .hobby:hover {
+            transform: scale(1.03);
+        }
+
+        .hobby-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .hobby h3 {
+            color: #38bdf8;
+            margin-bottom: 10px;
+        }
+
+        .hobby p {
+            color: #94a3b8;
+        }
+
+        /* İLETİŞİM */
+        .contact {
+            background: #111c31;
+        }
+
+        .contact-box {
+            max-width: 700px;
+            margin: auto;
+            background: #17233a;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .contact-item {
+            margin: 20px 0;
+            font-size: 18px;
+            color: #cbd5e1;
+        }
+
+        .contact-item strong {
+            color: #38bdf8;
+        }
+
+        .contact-item a {
+            color: #cbd5e1;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: #38bdf8;
+        }
+
+        /* WHATSAPP BUTONU */
+        .whatsapp-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 13px 25px;
+            background: #25D366;
+            color: white !important;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            background: #1ebe5d;
+            transform: translateY(-3px);
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #080f1e;
+            color: #64748b;
+        }
+
+        /* MOBİL */
+        @media (max-width: 800px) {
+
+            .menu {
+                display: none;
+            }
+
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 42px;
+            }
+
+            .profile-photo {
+                width: 240px;
+                height: 240px;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hobbies {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .skill-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 35px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="navbar">
+
+            <div class="logo">
+                Alican Demir
+            </div>
+
+            <ul class="menu">
+                <li><a href="#anasayfa">Ana Sayfa</a></li>
+                <li><a href="#hakkimda">Hakkımda</a></li>
+                <li><a href="#egitim">Eğitim</a></li>
+                <li><a href="#yazilim">Yazılım</a></li>
+                <li><a href="#hobiler">Hobiler</a></li>
+                <li><a href="#iletisim">İletişim</a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+
+    <!-- ANA SAYFA -->
+    <section class="hero" id="anasayfa">
+
+        <div class="hero-content">
+
+            <div class="hero-text">
+
+                <h1>
+                    Merhaba, Ben <span>Alican</span>
+                </h1>
+
+                <h2>
+                    Yazılım Geliştirici Adayı
+                </h2>
+
+                <p>
+                    16 yaşındayım. İstanbul Esenyurt'ta yaşıyorum.
+                    Yazılım ve web tasarımıyla ilgileniyorum.
+                    Kendimi geliştirerek gelecekte başarılı bir yazılımcı
+                    olmak istiyorum.
+                </p>
+
+                <div class="buttons">
+
+                    <a href="#hakkimda" class="btn btn-primary">
+                        Hakkımda
+                    </a>
+
+                    <a href="#iletisim" class="btn btn-secondary">
+                        İletişim
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOTOĞRAF -->
+            <div>
+
+                <img
+                    src="alican.jpg.jpg"
+                    alt="Alican Demir"
+                    class="profile-photo"
+                >
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- HAKKIMDA -->
+    <section id="hakkimda" class="about">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                <span>Hakkımda</span>
+            </h2>
+
+            <div class="about-content">
+
+                <div class="info-card">
+
+                    <h3>Ben Kimim?</h3>
+
+                    <p>
+                        Ben Alican Demir. 16 yaşındayım.
+                        Tokat'ta doğdum ve İstanbul'un Esenyurt ilçesinde
+                        yaşıyorum. Teknolojiye, bilgisayarlara ve yazılıma
+                        ilgi duyuyorum.
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <h3>Hedeflerim</h3>
+
+                    <p>
+                        Yazılım alanında kendimi geliştirmek,
+                        farklı programlama dillerini öğrenmek ve
+                        gelecekte başarılı projeler geliştirmek
+                        istiyorum.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EĞİTİM -->
+    <section id="egitim">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                <span>Eğitim</span> Hayatım
+            </h2>
+
+            <div class="education">
+
+                <div class="school">
+
+                    <h3>🎒 Namık Kemal İlkokulu</h3>
+
+                    <p>
+                        İlkokul eğitimimi Namık Kemal İlkokulunda tamamladım.
+                    </p>
+
+                </div>
+
+
+                <div class="school">
+
+                    <h3>📚 Namık Kemal Ortaokulu</h3>
+
+                    <p>
+                        Ortaokul eğitimimi Namık Kemal Ortaokulunda tamamladım.
+                    </p>
+
+                </div>
+
+
+                <div class="school">
+
+                    <h3>
+                        💻 Kıraç Borsa İstanbul Mesleki ve Teknik Anadolu Lisesi
+                    </h3>
+
+                    <p>
+                        İstanbul / Esenyurt - Kıraç Borsa İstanbul
+                        Mesleki ve Teknik Anadolu Lisesinde eğitimime
+                        devam ediyorum.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- YAZILIM -->
+    <section id="yazilim" class="skills">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Bildiğim <span>Teknolojiler</span>
+            </h2>
+
+            <div class="skill-container">
+
+                <div class="skill">
+                    <div class="icon">💻</div>
+                    <h3>C#</h3>
+                    <p>Programlama</p>
+                </div>
+
+                <div class="skill">
+                    <div class="icon">🌐</div>
+                    <h3>Web Tasarım</h3>
+                    <p>HTML & CSS</p>
+                </div>
+
+                <div class="skill">
+                    <div class="icon">🐍</div>
+                    <h3>Python</h3>
+                    <p>Python Programlama</p>
+                </div>
+
+                <div class="skill">
+                    <div class="icon">🛠️</div>
+                    <h3>PyCharm</h3>
+                    <p>Python Geliştirme</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- HOBİLER -->
+    <section id="hobiler">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                <span>Hobilerim</span>
+            </h2>
+
+            <div class="hobbies">
+
+                <div class="hobby">
+
+                    <div class="hobby-icon">🚲</div>
+
+                    <h3>Bisiklet Sürmek</h3>
+
+                    <p>
+                        Boş zamanlarımda bisiklet sürmeyi
+                        ve dışarıda vakit geçirmeyi seviyorum.
+                    </p>
+
+                </div>
+
+
+                <div class="hobby">
+
+                    <div class="hobby-icon">🎮</div>
+
+                    <h3>Oyun Oynamak</h3>
+
+                    <p>
+                        Bilgisayar ve konsol oyunları
+                        oynamaktan hoşlanıyorum.
+                    </p>
+
+                </div>
+
+
+                <div class="hobby">
+
+                    <div class="hobby-icon">👥</div>
+
+                    <h3>Arkadaşlarla Gezmek</h3>
+
+                    <p>
+                        Arkadaşlarımla buluşmayı,
+                        gezmeyi ve birlikte zaman geçirmeyi seviyorum.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- İLETİŞİM -->
+    <section id="iletisim" class="contact">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                <span>İletişim</span>
+            </h2>
+
+            <div class="contact-box">
+
+                <div class="contact-item">
+                    👤
+                    <strong>Ad Soyad:</strong>
+                    Alican Demir
+                </div>
+
+
+                <div class="contact-item">
+                    📧
+                    <strong>E-posta:</strong>
+
+                    <a href="mailto:alicandemir04@gmail.com">
+                        alicandemirr04@gmail.com
+                    </a>
+                </div>
+
+
+                <div class="contact-item">
+
+                    📱
+                    <strong>WhatsApp:</strong>
+
+                    <br>
+
+                    <a
+                        href="https://wa.me/9055284966660"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        0552 849 66 60
+                    </a>
+
+                    <br>
+
+                    <a
+                        href="https://wa.me/9055284966660"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="whatsapp-btn"
+                    >
+                        💬 WhatsApp'tan Mesaj Gönder
+                    </a>
+
+                </div>
+
+
+                <div class="contact-item">
+                    📍
+                    <strong>Yaşadığım Yer:</strong>
+                    İstanbul / Esenyurt
+                </div>
+
+
+                <div class="contact-item">
+                    🏠
+                    <strong>Doğum Yeri:</strong>
+                    Tokat
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            © 2026 Alican Demir | Kişisel Web Sitesi
+        </p>
+
+    </footer>
+
+</body>
+</html>
